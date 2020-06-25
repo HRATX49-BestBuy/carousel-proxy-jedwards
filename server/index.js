@@ -12,7 +12,7 @@ const proxy = httpProxy.createProxyServer({});
 
 http.createServer((req,res) => {
 
-  proxy.web(req, res, {target: 'http://localhost:3333'});
+  proxy.web(req, res, {target: 'disaster-dev.us-west-2.elasticbeanstalk.com'});
 
 }).listen(8008);
 

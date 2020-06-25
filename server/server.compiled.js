@@ -17,7 +17,7 @@ app.use(express["static"](path.join(__dirname, '../dist')));
 var proxy = httpProxy.createProxyServer({});
 http.createServer(function (req, res) {
   proxy.web(req, res, {
-    target: 'http://localhost:3333'
+    target: 'disaster-dev.us-west-2.elasticbeanstalk.com'
   });
 }).listen(8008);
 app.all('*', function (req, res) {
