@@ -5,8 +5,8 @@ const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
 
 const serverSearchbar = 'http://localhost:3001',
-      serverItemImage = 'http://localhost:3003',
-      serverCarousel = 'http://localhost:3002',
+      serverItemImage = 'http://localhost:3002',
+      serverCarousel = 'http://localhost:3003',
       serverReviews = 'http://localhost:3004'
 
 app.use(express.static(path.join(__dirname, './dist')));
