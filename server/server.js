@@ -11,7 +11,7 @@ const serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk
       serverCarousel = 'http://NewCarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com',
       serverReviews = 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'
 
-app.use(express.static(path.join(__dirname, './dist')));
+app.use(express.static(path.join(__dirname, '/dist')));
 app.use(express.json())
 
 app.all('/searchBar', (req, res) => {
