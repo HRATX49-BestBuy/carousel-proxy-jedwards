@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3333;
 const http = require('http');
 const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
+const path = require('path');
 
 const serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/',
       serverItemImage = 'http://localhost:3002',
