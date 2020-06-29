@@ -3,7 +3,7 @@
 var express = require('express');
 
 var app = express();
-var PORT = process.env.PORT || 3333;
+var PORT = process.env.PORT || 5001;
 
 var http = require('http');
 
@@ -14,12 +14,12 @@ var apiProxy = httpProxy.createProxyServer();
 var path = require('path');
 
 var serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/',
-    serverItemImage = 'http://localhost:3002',
+    serverItemImage = 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com',
     serverCarousel = 'http://NewCarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com',
     serverReviews = 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/';
-app.use(express["static"](path.join(__dirname, './dist')));
+app.use(express["static"](path.join(__dirname, '../dist')));
 app.use(express.json());
-app.all('/searchBar', function (req, res) {
+app.all('/api/get/products', function (req, res) {
   res.send('contact made from server searchBar');
   apiProxy.web(req, res, {
     target: serverSearchbar
@@ -31,13 +31,13 @@ app.all('/carousel', function (req, res) {
     target: serverCarousel
   });
 });
-app.all('/itemImage', function (req, res) {
+app.all('/display', function (req, res) {
   res.send('contact made from server itemImage');
   apiProxy.web(req, res, {
     target: serverItemImage
   });
 });
-app.all('/reviews', function (req, res) {
+app.all('/api/getReviews', function (req, res) {
   res.send('contact made from server reviews');
   apiProxy.web(req, res, {
     target: serverReviews
