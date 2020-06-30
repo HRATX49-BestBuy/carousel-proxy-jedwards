@@ -21,7 +21,7 @@ app.all('/api/get/products', (req, res) => {
 
 });
 
-app.all('/carousel', (req, res) => {
+app.all('/products', (req, res) => {
 
   res.send('contact made from server carousel');
   apiProxy.web(req, res, {target: serverCarousel});
