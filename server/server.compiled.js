@@ -10,38 +10,32 @@ var PORT = process.env.PORT || 8008;
 
 var httpProxy = require('http-proxy');
 
-var apiProxy = httpProxy.createProxyServer();
-var serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/',
-    serverItemImage = 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com',
-    serverCarousel = 'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/',
-    serverReviews = 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/';
+var proxy = httpProxy.createProxyServer({});
 app.use(express["static"](path.join(__dirname, '../dist')));
 app.use(express.json());
-app.all('/api/get/products', function (req, res) {
-  apiProxy.web(req, res, {
-    target: serverSearchbar
-  });
-  res.send('contact made from server searchBar');
-});
-app.all('/products', function (req, res) {
-  console.log('made contact with carousel');
-  apiProxy.web(req, res, {
-    target: serverCarousel
-  });
-  res.send('contact made from server carousel');
-});
-app.all('/display', function (req, res) {
-  apiProxy.web(req, res, {
-    target: serverItemImage
-  });
-  res.send('contact made from server itemImage');
-});
-app.all('/api/getReviews', function (req, res) {
-  apiProxy.web(req, res, {
-    target: serverReviews
-  });
-  res.send('contact made from server reviews');
+app.all('*', function (req, res) {
+  var endpoint = req.params[0];
+
+  if (endpoint === '/api/getReviews') {
+    proxy.web(req, res, {
+      target: 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'
+    });
+  } else if (endpoint === '/products') {
+    proxy.web(req, res, {
+      target: 'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/'
+    });
+  } else if (endpoint === '/api/get/products') {
+    proxy.web(req, res, {
+      target: 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/'
+    });
+  } else if (endpoint === '/display') {
+    proxy.web(req, res, {
+      target: 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'
+    });
+  } else {
+    res.status(400).send(endpoint);
+  }
 });
 app.listen(PORT, function () {
-  console.log("Listening for request for all services at port: ".concat(PORT));
+  console.log("Proxy listening on port ".concat(PORT));
 });

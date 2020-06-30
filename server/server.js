@@ -4,42 +4,37 @@ const path = require('path');
 const PORT = process.env.PORT || 8008;
 const httpProxy = require('http-proxy');
 
-const apiProxy = httpProxy.createProxyServer();
-
-const serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/',
-      serverItemImage = 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com',
-      serverCarousel = 'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/',
-      serverReviews = 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'
+const proxy = httpProxy.createProxyServer({});
 
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(express.json())
 
-app.all('/api/get/products', (req, res) => {
+app.all('*',(req,res)=>{
 
-  apiProxy.web(req, res, {target: serverSearchbar});
-  res.send('contact made from server searchBar');
+  let endpoint = req.params[0];
+  
+  if (endpoint === '/api/getReviews'){
 
-});
+    proxy.web(req,res,{target:'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'})
 
-app.all('/products', (req, res) => {
-  console.log('made contact with carousel');
-  apiProxy.web(req, res, {target: serverCarousel});
-  res.send('contact made from server carousel');
-});
+  } else if (endpoint === '/products') {
 
-app.all('/display', (req, res) => {
-
-  apiProxy.web(req, res, {target: serverItemImage});
-  res.send('contact made from server itemImage');
-});
-
-app.all('/api/getReviews', (req, res) => {
-
-  apiProxy.web(req, res, {target: serverReviews});
-  res.send('contact made from server reviews');
-});
-
+    proxy.web(req,res,{target:'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/'})
+  
+  } else if (endpoint === '/api/get/products'){
+    
+    proxy.web(req,res,{target:'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/'})
+   
+  } else if (endpoint === '/display'){
+  
+    proxy.web(req,res,{target:'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'})
+  
+  } else {
+   
+    res.status(400).send(endpoint)
+  }
+})
 app.listen(PORT, () => {
 
-  console.log(`Listening for request for all services at port: ${PORT}`);
-});
+  console.log(`Proxy listening on port ${PORT}`);
+})
