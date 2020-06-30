@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5001;
-const http = require('http');
-const httpProxy = require('http-proxy');
-const apiProxy = httpProxy.createProxyServer();
 const path = require('path');
+const PORT = process.env.PORT || 8008;
+const httpProxy = require('http-proxy');
+
+const apiProxy = httpProxy.createProxyServer();
 
 const serverSearchbar = 'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/',
       serverItemImage = 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com',
-      serverCarousel = 'http://NewCarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com',
+      serverCarousel = 'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/',
       serverReviews = 'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'
 
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -16,30 +16,30 @@ app.use(express.json())
 
 app.all('/api/get/products', (req, res) => {
 
-  res.send('contact made from server searchBar');
   apiProxy.web(req, res, {target: serverSearchbar});
+  res.send('contact made from server searchBar');
 
 });
 
 app.all('/products', (req, res) => {
-
-  res.send('contact made from server carousel');
+  console.log('made contact with carousel');
   apiProxy.web(req, res, {target: serverCarousel});
+  res.send('contact made from server carousel');
 });
 
 app.all('/display', (req, res) => {
 
-  res.send('contact made from server itemImage');
   apiProxy.web(req, res, {target: serverItemImage});
+  res.send('contact made from server itemImage');
 });
 
 app.all('/api/getReviews', (req, res) => {
 
-  res.send('contact made from server reviews');
   apiProxy.web(req, res, {target: serverReviews});
+  res.send('contact made from server reviews');
 });
 
 app.listen(PORT, () => {
 
-  console.log('Listening for request for all services')
+  console.log(`Listening for request for all services at port: ${PORT}`);
 });
