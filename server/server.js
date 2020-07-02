@@ -20,12 +20,15 @@ app.all('*',(req,res)=>{
   } else if (endpoint === '/products') {
 
     proxy.web(req,res,{target:'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/'})
-    proxy.web(req,res,{target:'http://Carousel2-env.eba-kxk2ammp.us-east-2.elasticbeanstalk.com'})
   
   } else if (endpoint === '/api/get/products'){
     
     proxy.web(req,res,{target:'http://searchbarricardo2-dev.us-east-2.elasticbeanstalk.com/'})
    
+  } else if (endpoint === '/products2'){
+  
+    proxy.web(req,res,{target:'http://Carousel2-env.eba-kxk2ammp.us-east-2.elasticbeanstalk.com'})
+  
   } else if (endpoint === '/display'){
   
     proxy.web(req,res,{target:'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'})
@@ -39,6 +42,8 @@ app.listen(PORT, () => {
 
   console.log(`Proxy listening on port ${PORT}`);
 })
+
+
 
 
 
