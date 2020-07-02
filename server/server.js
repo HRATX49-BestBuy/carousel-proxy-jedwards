@@ -13,7 +13,7 @@ app.all('*',(req,res)=>{
 
   let endpoint = req.params[0];
   
-  if (endpoint === '/api/getReviews'){
+  if (endpoint === '/api/getReviews') {
 
     proxy.web(req, res, {target:'http://111111-env.eba-9uquamkj.us-east-2.elasticbeanstalk.com/'})
 
