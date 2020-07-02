@@ -20,6 +20,7 @@ app.all('*',(req,res)=>{
   } else if (endpoint === '/products') {
 
     proxy.web(req,res,{target:'http://newcarousel-env.eba-irp2rurw.us-east-2.elasticbeanstalk.com/'})
+    proxy.web(req,res,{target:'http://Carousel2-env.eba-kxk2ammp.us-east-2.elasticbeanstalk.com'})
   
   } else if (endpoint === '/api/get/products'){
     
@@ -38,3 +39,6 @@ app.listen(PORT, () => {
 
   console.log(`Proxy listening on port ${PORT}`);
 })
+
+
+
