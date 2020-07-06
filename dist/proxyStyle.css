@@ -1,6 +1,42 @@
-body {
+/* body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.services {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 1200px;
 }
+
+#search-bar {
+
+    display: flex;
+    max-height: 148px;
+    max-width: 1200px;
+}
+
+#carousel2 {
+
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.cartIcon {
+
+    top: 2px;
+}
+
+.cartText {
+
+    top: 6px;
+}
+
+.Footer {
+
+    display: flex;
+} */
