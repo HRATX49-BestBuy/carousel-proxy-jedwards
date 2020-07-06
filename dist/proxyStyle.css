@@ -36,7 +36,7 @@ body {
     box-sizing: border-box;
 }
 
-/* .cartIcon {
+.cartIcon {
 
     top: 2px;
 }
@@ -44,7 +44,7 @@ body {
 .cartText {
 
     top: 6px;
-} */
+}
 
 #app {
 

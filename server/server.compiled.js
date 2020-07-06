@@ -40,7 +40,7 @@ app.all('*', function (req, res) {
     proxy.web(req, res, {
       target: 'http://NewFooter-env.eba-2v3fvsgb.us-east-2.elasticbeanstalk.com'
     });
-  } else if (endpoint === '/images/:id') {
+  } else if (endpoint === '/images') {
     proxy.web(req, res, {
       target: 'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'
     });
