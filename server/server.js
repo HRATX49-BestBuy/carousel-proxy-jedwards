@@ -33,9 +33,13 @@ app.all('*',(req,res)=>{
   
     proxy.web(req, res, {target:'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'})
   
-  } else if (endpoint === '/') {
+  } else if (endpoint === '/*') {
   
     proxy.web(req, res, {target:'http://NewFooter-env.eba-2v3fvsgb.us-east-2.elasticbeanstalk.com'})
+  
+  } else if (endpoint === '/images/:id') {
+  
+    proxy.web(req, res, {target:'http://imagecomponent-env-1.eba-4mfwjdhg.us-east-2.elasticbeanstalk.com/'})
   
   } else {
    
