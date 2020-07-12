@@ -10,30 +10,48 @@ Technology used:
     AWS S3, AWS Elastic Beanstalk, AWS RDS, AWS E2
     Trello
 
-Joshua Edwards: https://github.com/orgs/HRATX49-BestBuy/people/Kptkrunch
-Benjamin Polancich: https://github.com/orgs/HRATX49-BestBuy/people/PolancichBen
-Ricardo Guerrero: https://github.com/orgs/HRATX49-BestBuy/people/richigro
-Chris Murray: https://github.com/orgs/HRATX49-BestBuy/people/cmurray1105
+Joshua Edwards, https://github.com/orgs/HRATX49-BestBuy/people/Kptkrunch
+
+Benjamin Polancich, https://github.com/orgs/HRATX49-BestBuy/people/PolancichBen
+
+Ricardo Guerrero, https://github.com/orgs/HRATX49-BestBuy/people/richigro
+
+Chris Murray, https://github.com/orgs/HRATX49-BestBuy/people/cmurray1105
 
 Navbar:
 This was the component created by Ricardo Guerrero.
 ![Navbar Component Demo](demo/searchbar.png)
 
+
+
+
 Product Display:
 This component was completed by Chris Murray
 ![Product Display Component Demo](demo/itemimagesSMALL.gif)
+
+
+
 
 Carousel:
 Joshua Edwards created this component
 ![Carousel Component Demo](demo/carousel.gif)
 
+
+
+
 Carousel2: 
 Joshua Edwards created this component
 ![Carousel2 Component Demo](demo/carousel2.gif)
 
+
+
+
 Reviews: 
 Benjamin Polancich
 ![Reviews Component Demo](demo/reviewsGif.gif)
+
+
+
 
 Footer:
 Joshua Edwards created this component
